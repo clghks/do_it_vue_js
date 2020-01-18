@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Global Component</title>
+</head>
+<body>
+    <div id="app">
+        <button>컴포넌트 등록</button>
+        <my-component></my-component>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        Vue.component("my-component", {
+            template: "<div>전역 컴포넌트가 등록되었습니다.</div>"
+        });
+
+        app = new Vue({
+            el: "#app"
+        })
+    </script>
+</body>
+</html>

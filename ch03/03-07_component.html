@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <title>컴포넌트 유효 범위 증명</title>
+</head>
+<body>
+    <div id="app">
+        <my-component1 v-bind:cmpdata="cmpdata"></my-component1>
+        <my-component2 v-bind:cmpdata="cmpdata"></my-component2>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        var cmp1 = {
+            props: ['cmpdata'],
+            template: "<div>첫 번째 지역 컴포넌트 : {{ cmpdata }}</div>"
+        };
+
+        var cmp2 = {
+            props: ['cmpdata'],
+            template: "<div>두 번째 지역 컴포넌트 : {{ cmpdata }}</div>"
+        };
+
+        var app = new Vue({
+            el: "#app",
+            data: {
+                cmpdata: 100
+            },
+            components: {
+                "my-component1": cmp1,
+                "my-component2": cmp2
+            }
+        });
+    </script>
+</body>
+</html>

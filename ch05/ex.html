@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <title>Vue 템플릿 실습</title>
+</head>
+<body>
+    <div id="app">
+        <header>
+            <h3>{{ message }}</h3>
+            <!-- 
+                1. {{ }}를 이용한 데이터 바인딩 
+                새로 추가한 데이터 속성을 아래에 추가
+            -->
+        </header>
+        <section>
+            <!-- 
+                2. v-bind 디렉티브를 이용해 데이터 바인딩하기
+                uid 값을 변경한 후 크롬 개발자 도구의 '요소 검사' 기능으로 아래 p 태그의 id 값 확인 
+            -->
+            <p v-bind:id="uid"></p>
+
+            <button v-on:click="clickBtn">alert</button>
+            <!-- 
+                3. v-on 디렉티브를 이용해 클릭 이벤트 처리 하기
+                button 태그를 추가하고 새로우 추가한 클릭 메서드를 연결 
+             -->
+    
+             <!-- 
+                 4. v-if 디렉티브 조건에 따라 화면이 어떻게 바뀌는지 확인하기
+                 데이터의 flag 속성 값의 변환에 따라 아래 내용이 어떻게 변하는지 확인
+             -->
+             <ul v-if="flag">
+                <li>1</li>
+                <li>2</li>
+                <li>3</li>
+             </ul>
+        </section>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        var app = new Vue({
+            el: "#app",
+            data: {
+                message: "Hello Vue.js",
+                // 1. {{ }}를 이용한 데이터 바인딩 
+                // 새로운 데이터 속성 1개를 추가하고, {{ }} 데이터 바인딩을 이용해 화면에 표시해보기 
+                uid: 10,
+                // 2. v-bind 디렉티브를 이용해 데이터 바인딩하기
+                // uid를 변경하고 해당 uid의 변경 여부를 크롬 개발자 도구의 '화면 요소 검사' 기능으로 확인
+                // p 태그의 id 값을 검사
+                flag: false
+                // 4. v-if 디렉티브 조건에 따라 화면이 어떻게 바뀌는지 확인하기
+                // flag 값을 false로 변경했을 때 화면에 어떤 영향을 주는지 확인 
+            },
+            methods: {
+                clickBtn: function() {
+                    console.log("hi")
+                }
+                // 3. v-on 디렉티브를 이용해 클릭 이벤트 처리 하기
+                // eventMethod를 하나 추가하고 3번 영역에 추가한 버튼에 이벤트 연결
+            }
+        })
+    </script>
+</body>
+</html>
