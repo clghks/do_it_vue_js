@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>끝말잇기</title>
+</head>
+<body>
+    <div id="app">
+        <h1>{{ word }}</h1>
+        <input type="text" v-on:keypress.enter="onClick" v-model="value">
+        <button v-on:click="onClick">입력</button>
+        <h2>{{ result }}</h2>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        app = new Vue({
+            el: "#app",
+            data: {
+                word: "고기",
+                value: "",
+                result: ""
+            },
+            methods: {
+                onClick() {
+                    if (this.word[this.word.length-1] == this.value[0]) {
+                        this.result = "정답"
+                        this.word = this.value
+                        this.value = ""
+                    } else {
+                        this.result = "땡"
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+</html>
