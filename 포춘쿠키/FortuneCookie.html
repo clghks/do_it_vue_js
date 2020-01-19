@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <title>포추쿠키</title>
+</head>
+<body>
+    <div id="app">
+        <img src="https://www.astrology.com/images-US/games/game-fortune-cookie-1.png">
+        <h1>{{ message }}</h1>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        const messages = [
+            "발 밑을 조심하세요!",
+            "오래 기다려온 연락이 올 것 같습니다.",
+            "건강에 유의하는 하루가 되시길"
+        ]
+        app = new Vue({
+            el: "#app",
+            data: {
+                index: Math.ceil(Math.random() * messages.length -1),
+                message: ''
+            },
+            mounted: function() {
+                this.message = messages[this.index];
+            }
+        })
+    </script>
+</body>
+</html>
